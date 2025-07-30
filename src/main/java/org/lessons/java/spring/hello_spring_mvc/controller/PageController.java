@@ -12,4 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class PageController {
 
+    @GetMapping("home")
+    public String home() {
+        return "home";
+    };
+
+    @GetMapping("greeting")
+    public String greeting(@RequestParam(name = "name") String name, Model model) {
+        model.addAttribute("name", name);
+        model.addAttribute("timeNow", LocalTime.now());
+
+        return "greeting";
+    }
 }
